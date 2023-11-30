@@ -6,3 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
+
+$routes->get('people', 'People::index');
+$routes->post('people/storeOrUpdate', 'People::createOrEdit');
+$routes->get('people/(:num)', 'People::show/$1');
