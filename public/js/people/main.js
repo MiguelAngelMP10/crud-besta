@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let middleName = document.querySelector('#middle-name').value;
         let age = document.querySelector('#age').value;
         let genderId = document.querySelector('#gender').value;
+        let  puesto = document.querySelector('#puesto').value;
 
         let formData = new FormData();
         formData.append('id', id);
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         formData.append('last_name', lastName);
         formData.append('middle_name', middleName);
         formData.append('age', age);
+        formData.append('puesto', puesto);
         formData.append('gender_id', genderId);
 
         fetch('http://localhost:8080/people/storeOrUpdate', {
@@ -56,6 +58,7 @@ const editPerson = (id) => {
             document.getElementById('last-name').value = data.last_name;
             document.getElementById('middle-name').value = data.middle_name;
             document.getElementById('age').value = data.age;
+            document.getElementById('puesto').value = data.puesto;
 
             let miSelect = document.getElementById('gender');
 

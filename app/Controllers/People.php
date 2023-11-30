@@ -33,9 +33,10 @@ class People extends BaseController
         $middle_name = $this->request->getPost('middle_name');
         $age = $this->request->getPost('age');
         $gender_id = $this->request->getPost('gender_id');
+        $puesto = $this->request->getPost('puesto');
 
         $peopleModel = new \App\Models\People();
-        $peopleModel->callProcedureSaveOrUpdatePerson($id, $name, $last_name, $middle_name, $age, $gender_id);
+        $peopleModel->callProcedureSaveOrUpdatePerson($id, $name, $last_name, $middle_name, $age, $gender_id, $puesto);
         return $this->response->setJSON(['status' => true, 'message' => 'Datos guardados con éxito']);
     }
 

@@ -12,7 +12,7 @@ class People extends Model
     protected $returnType = 'object';
     protected $useSoftDeletes = true;
     protected $protectFields = true;
-    protected $allowedFields = ['name', 'last_name', 'middle_name', 'age', 'gender_id', 'deleted_at'];
+    protected $allowedFields = ['name', 'last_name', 'middle_name', 'age', 'gender_id', 'deleted_at', 'puesto'];
 
     // Dates
     protected $useTimestamps = false;
@@ -46,10 +46,10 @@ class People extends Model
         ],
     ];
 
-    public function callProcedureSaveOrUpdatePerson($id, $name, $last_name, $middle_name, $age, $gender_id)
+    public function callProcedureSaveOrUpdatePerson($id, $name, $last_name, $middle_name, $age, $gender_id, $puesto)
     {
-        $procedureCall = "CALL sp_SaveOrUpdatePerson(?, ?, ?, ?, ?, ?)";
-        $params = [$id, $name, $last_name, $middle_name, $age, $gender_id];
+        $procedureCall = "CALL sp_SaveOrUpdatePerson(?, ?, ?, ?, ?, ?,?)";
+        $params = [$id, $name, $last_name, $middle_name, $age, $gender_id, $puesto];
         $this->db->query($procedureCall, $params);
     }
 }
