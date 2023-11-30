@@ -77,4 +77,6 @@ class Paths
      * is used when no value is provided to `Services::renderer()`.
      */
     public string $viewDirectory = __DIR__ . '/../Views';
+
+    public $publicDirectory = 'public';
 }
