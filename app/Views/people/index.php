@@ -3,7 +3,13 @@
 
 <?= $this->section('content') ?>
     <script src="<?= base_url('js/people/main.js') ?>"></script>
-    <div class="container">
+    <div class="container mt-3">
+        <?php if (session()->has('success')): ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <?= session('success') ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
         <h2>People List</h2>
 
         <button type="button" class="btn btn-outline-primary" onclick="openModal()">
@@ -63,7 +69,7 @@
                 <th>Middle Name</th>
                 <th>Age</th>
                 <th>Gender</th>
-                <th>Actions</th>
+                <th colspan="2">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -80,6 +86,15 @@
                                 class="btn btn-outline-info">
                             Edit
                         </button>
+                    </td>
+                    <td>
+                        <?php if (is_null($person->deleted_at)): ?>
+                            <a href="<?= site_url('people/delete/' . $person->id) ?>" class="btn btn-outline-danger"
+                               onclick="return confirm('Are you sure you want to delete this person?')">Delete</a>
+                        <?php else: ?>
+                            <a href="<?= site_url('people/restore/' . $person->id) ?>" class="btn btn-outline-warning"
+                               onclick="return confirm('Are you sure you want to restore this person?')">Restore</a>
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
