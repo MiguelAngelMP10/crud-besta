@@ -48,7 +48,6 @@ class People extends Model
 
     public function callProcedureSaveOrUpdatePerson($id, $name, $last_name, $middle_name, $age, $gender_id)
     {
-        // Llamada al procedimiento almacenado
         $procedureCall = "CALL sp_SaveOrUpdatePerson(?, ?, ?, ?, ?, ?)";
         $params = [$id, $name, $last_name, $middle_name, $age, $gender_id];
         $this->db->query($procedureCall, $params);
